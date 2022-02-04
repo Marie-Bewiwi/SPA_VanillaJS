@@ -1,0 +1,9 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.header {
+  background-color: rosybrown;
+  height: 150px;
+  display: flex;
+}
