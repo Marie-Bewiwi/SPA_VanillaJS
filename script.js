@@ -45,7 +45,7 @@ const divroot = document.querySelector('#root')
 const createHeader = () => {
     const img = createComponent('img',{src : "/logo_ynov.png"})
     const header = createComponent('header',{},[img])
-    divroot.append(header)
+    return header
 }
 
 const createMain = () => {
@@ -53,7 +53,7 @@ const createMain = () => {
     const divWrapper = createComponent('div', { className: "flex" }, cards)
     const title = createComponent('h1', { textContent: "Ynov Web Courses" })
     const main = createComponent('main',{},[title, divWrapper])
-    divroot.append(main)
+    return main
 
 }
 
@@ -82,13 +82,11 @@ const createPopup = () => {
     popupCloseBtn.addEventListener('click',()=>{
         popupContainer.classList.add('hidden')
     })
-    divroot.append(popupContainer)
+    return popupContainer
 }
 
 const ellipseText = (txt) => {
     return `${txt.substring(0,80)}...`
 }
 
-createHeader()
-createMain()
-createPopup()
+divroot.append(createHeader(), createMain(), createPopup())
