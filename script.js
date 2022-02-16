@@ -21,49 +21,47 @@ const cardsData = [
 
 
 
-const createComponent = (tag,innercontent,attribute,child) => {
-    const htmlComponent = document.createElement(tag)
-    htmlComponent.setAttribute = Object.entries 
-    htmlComponent.textContent = innercontent;
-    document.body.append(htmlComponent)
-    htmlComponent.append(child)
+const createComponent = (tag,attributes,children = []) => {
+ const element = document.createElement(tag)
+ const attrs =  Object.entries(attributes)
+ attrs.forEach(([key,value])=>{
+     if (key === "textContent") {
+         element.textContent = value
+     } else if (key === "className") {
+         element.className = value
+     } else {
+        element.setAttribute(key,value)
+     }
+ })
+ children.forEach((child)=> {
+     element.append(child)
+ })
+ return element
 }
+
 
 const divroot = document.querySelector('#root')
 
 const createHeader = () => {
-
-    const header = document.createElement('header')
-    const img = document.createElement('img')
-    img.src = "/logo_ynov.png"
+    const img = createComponent('img',{src : "/logo_ynov.png"})
+    const header = createComponent('header',{},[img])
     divroot.append(header)
-    header.append(img)
 }
 
 const createMain = () => {
-    const main = document.createElement('main')
-    const title = document.createElement('h1')
-    const divWrapper = document.createElement('div')
-    cardsData.forEach(data => {
-        const card = createCard(data)
-        divWrapper.append(card)
-    });
-    divWrapper.classList.add('flex')
-    title.textContent = "Ynov Web Courses"
+    const cards = cardsData.map(data => createCard(data));
+    const divWrapper = createComponent('div', { className: "flex" }, cards)
+    const title = createComponent('h1', { textContent: "Ynov Web Courses" })
+    const main = createComponent('main',{},[title, divWrapper])
     divroot.append(main)
-    main.append(title)
-    main.append(divWrapper)
 
 }
 
 const createCard = (params) => {
-    const cardContainer = document.createElement('section')
-    const cardTitle = document.createElement('h2')
-    const cardContent = document.createElement('p')
-    const cardDetailsBtn = document.createElement('button')
-    cardTitle.textContent = params.name
-    cardContent.textContent = ellipseText(params.description)
-    cardDetailsBtn.textContent = "Get Details"
+    const cardTitle = createComponent('h2', { textContent: params.name })
+    const cardContent = createComponent('p', { textContent: ellipseText(params.description)})
+    const cardDetailsBtn = createComponent('button', { textContent: "Get Details"})
+    const cardContainer = createComponent('section', {}, [cardTitle, cardContent, cardDetailsBtn])
     cardDetailsBtn.addEventListener('click',()=>{
         const modal = document.querySelector('.modal')
         const modalTitle = modal.querySelector('h2')
@@ -73,25 +71,18 @@ const createCard = (params) => {
         modal.classList.remove('hidden')
     })
     divroot.append(cardContainer)
-    cardContainer.append(cardTitle,cardContent,cardDetailsBtn)
     return cardContainer
 }
 
 const createPopup = () => {
-    const popupContainer = document.createElement('div')
-    popupContainer.classList.add('modal','hidden')
-    const popupTitle = document.createElement('h2')
-    const popupContent = document.createElement('p')
-    const popupCloseBtn = document.createElement('button')
-    popupTitle.textContent = "Create a SPA in.."
-    popupContent.textContent = "loremjioezjdfiojzedsiojzeffhnufhnuihzefhefhnzefi"
-    popupCloseBtn.textContent = "Close"
+    const popupTitle = createComponent('h2', {})
+    const popupContent = createComponent('p', {})
+    const popupCloseBtn = createComponent('button', { textContent: "Close"})
+    const popupContainer = createComponent('div', { className: 'modal hidden'}, [popupTitle, popupContent, popupCloseBtn])
     popupCloseBtn.addEventListener('click',()=>{
         popupContainer.classList.add('hidden')
     })
     divroot.append(popupContainer)
-    popupContainer.append(popupTitle,popupContent,popupCloseBtn)
-
 }
 
 const ellipseText = (txt) => {
