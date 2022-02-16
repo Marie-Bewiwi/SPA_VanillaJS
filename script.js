@@ -30,5 +30,18 @@ const createMain = () => {
     main.append(title)
 }
 
+const createCard = () => {
+    const cardContainer = document.createElement('div')
+    const cardTitle = document.createElement('h2')
+    const cardContent = document.createElement('p')
+    const cardDetailsBtn = document.createElement('button')
+    cardTitle.textContent = "Create a SPA in.."
+    cardContent.textContent = "loremjioezjdfiojzedsiojzeffhnufhnuihzefhefhnzefi"
+    cardDetailsBtn.textContent = "Get Details"
+    divroot.append(cardContainer)
+    cardContainer.append(cardTitle,cardContent,cardDetailsBtn)
+}
+
 createHeader()
 createMain()
+createCard()
