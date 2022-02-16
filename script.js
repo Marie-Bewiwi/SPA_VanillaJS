@@ -47,5 +47,21 @@ const createCard = () => {
     return cardContainer
 }
 
+const createPopup = () => {
+    const popupContainer = document.createElement('div')
+    const popupTitle = document.createElement('h2')
+    const popupContent = document.createElement('p')
+    const popupCloseBtn = document.createElement('button')
+    popupTitle.textContent = "Create a SPA in.."
+    popupContent.textContent = "loremjioezjdfiojzedsiojzeffhnufhnuihzefhefhnzefi"
+    popupCloseBtn.textContent = "Close"
+    divroot.append(popupContainer)
+    popupContainer.append(popupTitle,popupContent,popupCloseBtn)
+
+
+
+}
+
 createHeader()
 createMain()
+createPopup()
