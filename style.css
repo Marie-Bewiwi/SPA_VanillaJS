@@ -16,7 +16,7 @@ header {
   background-color: #e18683;
   display: flex;
   padding: 20px;
-  height: 60px;
+  height: 100px;
 }
 
 .flex {
@@ -27,6 +27,7 @@ section {
   border-radius: 5px;
   margin: 10px;
   padding: 15px;
+  width: 200px;
 }
 
 .modal {
@@ -43,4 +44,13 @@ section {
 
 .hidden {
   transform: translateY(50vh);
+}
+
+h1 {
+  margin: 10px;
+}
+h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
