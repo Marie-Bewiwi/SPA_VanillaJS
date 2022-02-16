@@ -1,9 +1,33 @@
+@font-face {
+  font-family: Roboto;
+  src: url(Roboto-Regular.ttf);
+}
+
 body {
   margin: 0px;
   padding: 0px;
+  font-family: "Roboto";
 }
-.header {
+header {
   background-color: #e18683;
-  height: 150px;
   display: flex;
+  padding: 20px;
+  height: 60px;
+}
+
+.flex {
+  display: flex;
+}
+section {
+  border: 1px black solid;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 15px;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0px;
+  box-shadow: -14px -7px 20px 20px #aaa;
+  width: 100vw;
 }

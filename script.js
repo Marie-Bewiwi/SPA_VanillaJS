@@ -25,17 +25,20 @@ const createHeader = () => {
 const createMain = () => {
     const main = document.createElement('main')
     const title = document.createElement('h1')
+    const divWrapper = document.createElement('div')
     const card = createCard()
     const card2 = createCard()
+    divWrapper.classList.add('flex')
     title.textContent = "Ynov Web Courses"
     divroot.append(main)
     main.append(title)
-    main.append(card,card2)
+    divWrapper.append(card,card2)
+    main.append(divWrapper)
 
 }
 
 const createCard = () => {
-    const cardContainer = document.createElement('div')
+    const cardContainer = document.createElement('section')
     const cardTitle = document.createElement('h2')
     const cardContent = document.createElement('p')
     const cardDetailsBtn = document.createElement('button')
@@ -49,6 +52,7 @@ const createCard = () => {
 
 const createPopup = () => {
     const popupContainer = document.createElement('div')
+    popupContainer.classList.add('modal')
     const popupTitle = document.createElement('h2')
     const popupContent = document.createElement('p')
     const popupCloseBtn = document.createElement('button')
