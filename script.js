@@ -1,8 +1,3 @@
-// Créer une fonction qui créer un élement qui prend en paramètre & - le nom du tag 2- propriété - 3 enfant
-
-//que faire pour le attribute ? Un objet ? 
-//Voir comment mettre contenu
-//object.entries + obj["a"]=>1
 
 const cardsData = [
     {
@@ -58,10 +53,12 @@ const createMain = () => {
 }
 
 const createCard = (params) => {
+    let likes = 0;
     const cardTitle = createComponent('h2', { textContent: params.name })
     const cardContent = createComponent('p', { textContent: ellipseText(params.description)})
     const cardDetailsBtn = createComponent('button', { textContent: "Get Details"})
-    const cardContainer = createComponent('section', {}, [cardTitle, cardContent, cardDetailsBtn])
+    const likeBtn = createComponent('button',{textContent : `Like ${likes} 💔`} )
+    const cardContainer = createComponent('section', {}, [cardTitle, cardContent, cardDetailsBtn,likeBtn])
     cardDetailsBtn.addEventListener('click',()=>{
         const modal = document.querySelector('.modal')
         const modalTitle = modal.querySelector('h2')
@@ -69,6 +66,10 @@ const createCard = (params) => {
         modalTitle.textContent = params.name
         modalContent.textContent = params.description
         modal.classList.remove('hidden')
+    })
+    likeBtn.addEventListener('click',()=> {
+        likes++
+        likeBtn.textContent = `Like ${likes} 💖`
     })
     divroot.append(cardContainer)
     return cardContainer
