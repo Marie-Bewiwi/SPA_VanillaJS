@@ -3,6 +3,24 @@
 //que faire pour le attribute ? Un objet ? 
 //Voir comment mettre contenu
 //object.entries + obj["a"]=>1
+
+const cardsData = [
+    {
+      "name": "Create an SPA in Vanilla JS",
+      "description": "Create an application with only javascript and one poor html tag has never been so fun"
+    },
+    {
+      "name": "Learn React",
+      "description": "Spoiler alert, but everything that you're doing at the moment is very boring and React is way better"
+    },
+    {
+      "name": "Learn Angular",
+      "description": "I'm so sorry for you. You have to go through it as well so you can really understand how React is simpler. Less guided, but simpler."
+    }
+  ]
+
+
+
 const createComponent = (tag,innercontent,attribute,child) => {
     const htmlComponent = document.createElement(tag)
     htmlComponent.setAttribute = Object.entries 
@@ -26,24 +44,25 @@ const createMain = () => {
     const main = document.createElement('main')
     const title = document.createElement('h1')
     const divWrapper = document.createElement('div')
-    const card = createCard()
-    const card2 = createCard()
+    cardsData.forEach(data => {
+        const card = createCard(data)
+        divWrapper.append(card)
+    });
     divWrapper.classList.add('flex')
     title.textContent = "Ynov Web Courses"
     divroot.append(main)
     main.append(title)
-    divWrapper.append(card,card2)
     main.append(divWrapper)
 
 }
 
-const createCard = () => {
+const createCard = (params) => {
     const cardContainer = document.createElement('section')
     const cardTitle = document.createElement('h2')
     const cardContent = document.createElement('p')
     const cardDetailsBtn = document.createElement('button')
-    cardTitle.textContent = "Create a SPA in.."
-    cardContent.textContent = "loremjioezjdfiojzedsiojzeffhnufhnuihzefhefhnzefi"
+    cardTitle.textContent = params.name
+    cardContent.textContent = params.description
     cardDetailsBtn.textContent = "Get Details"
     divroot.append(cardContainer)
     cardContainer.append(cardTitle,cardContent,cardDetailsBtn)
