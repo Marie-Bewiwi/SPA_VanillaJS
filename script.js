@@ -1,14 +1,25 @@
 // Créer une fonction qui créer un élement qui prend en paramètre & - le nom du tag 2- propriété - 3 enfant
 
-
-const createComponent = (tag,attribute,child) => {
+//que faire pour le attribute ? Un objet ? 
+//Voir comment mettre contenu
+//object.entries + obj["a"]=>1
+const createComponent = (tag,innercontent,attribute,child) => {
     const htmlComponent = document.createElement(tag)
-    htmlComponent.setAttribute = attribute
-    htmlComponent.createElement(child)
-    
+    htmlComponent.setAttribute = Object.entries 
+    htmlComponent.textContent = innercontent;
+    document.body.append(htmlComponent)
+    htmlComponent.append(child)
 }
 
+const divroot = document.querySelector('#root')
 
-const header = document.createElement('header')
-header.classList.add('header')
-document.body.append(header)
+const createHeader = () => {
+
+    const header = document.createElement('header')
+    const img = document.createElement('img')
+    img.src = "/logo_ynov.png"
+    divroot.append(header)
+    header.append(img)
+}
+
+createHeader()
