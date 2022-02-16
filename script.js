@@ -65,8 +65,12 @@ const createCard = (params) => {
     cardContent.textContent = params.description
     cardDetailsBtn.textContent = "Get Details"
     cardDetailsBtn.addEventListener('click',()=>{
-    const modal = document.querySelector('.modal')
-    modal.classList.remove('hidden')
+        const modal = document.querySelector('.modal')
+        const modalTitle = modal.querySelector('h2')
+        const modalContent =  modal.querySelector('p')
+        modalTitle.textContent = params.name
+        modalContent.textContent = params.description
+        modal.classList.remove('hidden')
     })
     divroot.append(cardContainer)
     cardContainer.append(cardTitle,cardContent,cardDetailsBtn)
