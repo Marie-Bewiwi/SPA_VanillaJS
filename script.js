@@ -25,9 +25,13 @@ const createHeader = () => {
 const createMain = () => {
     const main = document.createElement('main')
     const title = document.createElement('h1')
+    const card = createCard()
+    const card2 = createCard()
     title.textContent = "Ynov Web Courses"
     divroot.append(main)
     main.append(title)
+    main.append(card,card2)
+
 }
 
 const createCard = () => {
@@ -40,8 +44,8 @@ const createCard = () => {
     cardDetailsBtn.textContent = "Get Details"
     divroot.append(cardContainer)
     cardContainer.append(cardTitle,cardContent,cardDetailsBtn)
+    return cardContainer
 }
 
 createHeader()
 createMain()
-createCard()
