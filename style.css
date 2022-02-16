@@ -3,6 +3,10 @@
   src: url(Roboto-Regular.ttf);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -30,4 +34,13 @@ section {
   bottom: 0px;
   box-shadow: -14px -7px 20px 20px #aaa;
   width: 100vw;
+  background-color: white;
+  padding: 10px;
+  height: 50vh;
+  transition: transform 1s ease;
+  transform: translateY(0);
+}
+
+.hidden {
+  transform: translateY(50vh);
 }
