@@ -64,6 +64,10 @@ const createCard = (params) => {
     cardTitle.textContent = params.name
     cardContent.textContent = params.description
     cardDetailsBtn.textContent = "Get Details"
+    cardDetailsBtn.addEventListener('click',()=>{
+    const modal = document.querySelector('.modal')
+    modal.classList.remove('hidden')
+    })
     divroot.append(cardContainer)
     cardContainer.append(cardTitle,cardContent,cardDetailsBtn)
     return cardContainer
@@ -71,17 +75,18 @@ const createCard = (params) => {
 
 const createPopup = () => {
     const popupContainer = document.createElement('div')
-    popupContainer.classList.add('modal')
+    popupContainer.classList.add('modal','hidden')
     const popupTitle = document.createElement('h2')
     const popupContent = document.createElement('p')
     const popupCloseBtn = document.createElement('button')
     popupTitle.textContent = "Create a SPA in.."
     popupContent.textContent = "loremjioezjdfiojzedsiojzeffhnufhnuihzefhefhnzefi"
     popupCloseBtn.textContent = "Close"
+    popupCloseBtn.addEventListener('click',()=>{
+        popupContainer.classList.add('hidden')
+    })
     divroot.append(popupContainer)
     popupContainer.append(popupTitle,popupContent,popupCloseBtn)
-
-
 
 }
 
