@@ -62,7 +62,7 @@ const createCard = (params) => {
     const cardContent = document.createElement('p')
     const cardDetailsBtn = document.createElement('button')
     cardTitle.textContent = params.name
-    cardContent.textContent = params.description
+    cardContent.textContent = ellipseText(params.description)
     cardDetailsBtn.textContent = "Get Details"
     cardDetailsBtn.addEventListener('click',()=>{
         const modal = document.querySelector('.modal')
@@ -92,6 +92,10 @@ const createPopup = () => {
     divroot.append(popupContainer)
     popupContainer.append(popupTitle,popupContent,popupCloseBtn)
 
+}
+
+const ellipseText = (txt) => {
+    return `${txt.substring(0,80)}...`
 }
 
 createHeader()
