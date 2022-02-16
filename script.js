@@ -22,4 +22,13 @@ const createHeader = () => {
     header.append(img)
 }
 
+const createMain = () => {
+    const main = document.createElement('main')
+    const title = document.createElement('h1')
+    title.textContent = "Ynov Web Courses"
+    divroot.append(main)
+    main.append(title)
+}
+
 createHeader()
+createMain()
